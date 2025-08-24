@@ -38,21 +38,6 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * Handles DatasetNotFoundException and returns a 404 Not Found response.
-     *
-     * @param ex the thrown DatasetNotFoundException
-     * @return ResponseEntity with error details and HTTP status 404
-     */
-    @ExceptionHandler(DatasetNotFoundException.class)
-    public ResponseEntity<Map<String, Object>> handleDatasetNotFound(DatasetNotFoundException ex) {
-        logger.error("DatasetNotFoundException: {}", ex.getMessage());
-        Map<String, Object> errorResponse = new HashMap<>();
-        errorResponse.put("error", ex.getMessage());
-        errorResponse.put("status", HttpStatus.NOT_FOUND.value());
-        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
-    }
-
-    /**
      * Handles InvalidFieldException and returns a 400 Bad Request response.
      *
      * @param ex the thrown InvalidFieldException
